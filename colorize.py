@@ -11,7 +11,7 @@ init(autoreset=True)
 # new files. If you choose to use duotone, you can either enter a valid hex color or use the
 # * character to generate all 96 colors. If you choose to use hue shift, you can either enter
 # a valid angle or use the -1 character to generate all 360 angles (in increments of 10 degrees).
-# If you choose to use grayscale, the script will simply convert the image to grayscale.
+# If you choose to use grayscale, the script will simply convert the images to grayscale.
 # The script will also print out the name of each file as it is colorized and saved.
 
 
