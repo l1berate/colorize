@@ -280,11 +280,13 @@ for filename in os.listdir(folder):
                 colorize(image, light_color, dark_color, output)
             else:
                 for name, color in duotone_color_dict.items():
-                    temp_output = output.split('.')[0] + f"_{name}.png"
+                    temp_output = output.split(
+                        '.')[0] + f"_{name.replace(' ', '_')}.png"
                     colorize(image, light_color, color, temp_output)
-                    print("\r" + " " * 130, end='')
-                    print("\r" + rainbow_text("Colorized ") + fblue + filename + fgreen +
-                          " and saved as " + fmagenta + temp_output + fgreen + "...", end='')
+                    print("\r" + " " *
+                          int(os.get_terminal_size()[0]), end='\r')
+                    print(rainbow_text("Colorized ") + fblue + filename + fgreen +
+                          " with Duotone/" + name + " and saved as " + fmagenta + temp_output + fgreen + "...", end='')
         elif grayscale:
             grayscale_image = image.convert("L")
             grayscale_image.save(output, "PNG")
@@ -294,14 +296,16 @@ for filename in os.listdir(folder):
                 for i in range(10, 350, 10):
                     temp_output = output.split('.')[0] + f"_{i}.png"
                     apply_hue_shift(image, i, temp_output)
-                    print("\r" + " " * 130, end='')
-                    print("\r" + rainbow_text("Colorized ") + fblue + filename + fgreen +
-                          " and saved as " + fmagenta + temp_output + fgreen + "...", end='')
+                    print("\r" + " " *
+                          int(os.get_terminal_size()[0]), end='\r')
+                    print(rainbow_text("Colorized ") + fblue + filename + fgreen +
+                          " with Hue Shift Angle: " + str(i) + " and saved as " + fmagenta + temp_output + fgreen + "...", end='')
             else:
                 apply_hue_shift(image, angle, output)
-        print("\r" + " " * 130, end='')
-        print("\r" + rainbow_text("Colorized ") + fblue + filename + fgreen +
+        print("\r" + " " * int(os.get_terminal_size()[0]), end='\r')
+        print(rainbow_text("Colorized ") + fblue + filename + fgreen +
               " and saved as " + fmagenta + output + fgreen + "...", end='')
+        del image
     else:
         continue
 
